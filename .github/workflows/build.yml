@@ -29,14 +29,14 @@ jobs:
           # Activate the virtual environment
           source venv/bin/activate
           
-          # Install dependencies into a "package" directory for Lambda deployment
+          # Create a deployment package directory
           mkdir -p package
-          pip install -r requirements.txt --target ./package
-          
-          # Add the application code to the package
-          cp -r . ./package
 
-          # Navigate to the package directory
+          # Install dependencies into the "package" directory
+          pip install -r requirements.txt --target ./package
+
+          # Copy the necessary application files (e.g., app.py, any additional modules)
+          cp app.py ./package
           cd package
 
           # Zip the package for deployment
